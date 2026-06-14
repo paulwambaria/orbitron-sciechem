@@ -189,7 +189,7 @@ export default function Chatbot() {
       {isOpen && (
         <div
           ref={panelRef}
-          className="fixed bottom-[88px] left-4 sm:left-6 z-50 flex flex-col bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden"
+          className="fixed bottom-[88px] right-4 sm:right-6 z-50 flex flex-col bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden"
           style={{ width: 'min(380px, calc(100vw - 2rem))', height: 'min(540px, calc(100dvh - 120px))' }}
         >
           {/* Header */}
@@ -306,7 +306,7 @@ export default function Chatbot() {
       <button
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? 'Close chat' : 'Chat with Orbi'}
-        className="fixed bottom-6 left-4 sm:left-6 z-50 flex items-center gap-2.5 bg-[#003B7A] hover:bg-blue-700 text-white rounded-2xl pl-3.5 pr-4 py-3 shadow-lg shadow-blue-900/30 hover:shadow-xl transition-all hover:-translate-y-0.5 group"
+        className="fixed bottom-6 right-4 sm:right-6 z-50 flex items-center gap-2.5 bg-[#003B7A] hover:bg-blue-700 text-white rounded-2xl pl-3.5 pr-4 py-3 shadow-lg shadow-blue-900/30 hover:shadow-xl transition-all hover:-translate-y-0.5 group"
       >
         {isOpen ? (
           <X size={18} />
