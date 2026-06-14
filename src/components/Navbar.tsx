@@ -177,8 +177,9 @@ export default function Navbar() {
                   <motion.div
                     initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 6 }} transition={{ duration: 0.16 }}
-                    className="mega-menu absolute left-0 w-screen max-w-4xl p-7 mt-1"
-                    style={{ left: '50%', transform: 'translateX(-50%)' }}
+                    transformTemplate={(_v, gen) => `translateX(-50%) ${gen}`}
+                    className="mega-menu max-w-4xl p-7"
+                    style={{ left: '50%' }}
                     onMouseEnter={keepOpen} onMouseLeave={closeMega}
                   >
                     <div className="grid grid-cols-3 gap-6">
