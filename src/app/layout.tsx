@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import Chatbot from "@/components/Chatbot";
+import Preloader from "@/components/Preloader";
 import { OrganizationSchema } from "@/components/SchemaOrg";
 
 const montserrat = Montserrat({
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <OrganizationSchema />
       </head>
       <body className="min-h-full flex flex-col bg-white text-neutral-900">
+        <Preloader />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
