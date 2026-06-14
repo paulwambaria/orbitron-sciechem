@@ -7,8 +7,8 @@ function OrbLogo() {
     <Image
       src="/logo.svg"
       alt="Orbitron Sciechem Limited"
-      width={46}
-      height={46}
+      width={62}
+      height={62}
       className="object-contain"
     />
   );

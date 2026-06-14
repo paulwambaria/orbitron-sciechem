@@ -59,23 +59,23 @@ const INDUSTRIES = [
 ];
 
 const SOLUTIONS = [
-  'Technical Consulting',
-  'Quality Assurance',
-  'Logistics & Distribution',
-  'Supply Chain Management',
-  'Custom Formulations',
+  { label: 'Technical Consulting',      href: '/contact' },
+  { label: 'Quality Assurance',         href: '/contact' },
+  { label: 'Logistics & Distribution',  href: '/chemical-distributor-east-africa' },
+  { label: 'Supply Chain Management',   href: '/contact' },
+  { label: 'Custom Formulations',       href: '/contact' },
 ];
 
 const ABOUT_LINKS = [
-  { label: 'About Orbitron', href: '/about' },
+  { label: 'About Orbitron',   href: '/about' },
   { label: 'Mission & Vision', href: '/about#mission' },
-  { label: 'Certifications', href: '/about#certifications' },
-  { label: 'Sustainability', href: '/about#sustainability' },
-  { label: 'Our Team', href: '/about#team' },
-  { label: 'Careers', href: '/careers' },
+  { label: 'Certifications',   href: '/about#certifications' },
+  { label: 'Sustainability',   href: '/about#sustainability' },
+  { label: 'Our Team',         href: '/about#team' },
+  { label: 'Careers',          href: '/contact' },
 ];
 
-function OrbLogo({ size = 42 }: { size?: number }) {
+function OrbLogo({ size = 54 }: { size?: number }) {
   return (
     <Image
       src="/logo.svg"
@@ -83,7 +83,7 @@ function OrbLogo({ size = 42 }: { size?: number }) {
       width={size}
       height={size}
       priority
-      className="object-contain"
+      className="object-contain drop-shadow-sm"
     />
   );
 }
@@ -152,13 +152,13 @@ export default function Navbar() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[4.25rem] flex items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setMobileOpen(false)}>
-            <OrbLogo size={38} />
+          <Link href="/" className="flex items-center gap-3 shrink-0" onClick={() => setMobileOpen(false)}>
+            <OrbLogo size={54} />
             <div className="leading-none">
-              <span className={`block font-heading font-black text-[0.95rem] tracking-widest ${dark ? 'text-white' : 'text-blue-700'}`}>
+              <span className={`block font-heading font-black text-[1.05rem] tracking-widest ${dark ? 'text-white' : 'text-blue-700'}`}>
                 ORBITRON
               </span>
-              <span className={`block font-heading font-semibold text-[0.57rem] tracking-[0.22em] ${dark ? 'text-acc-400' : 'text-blue-500'}`}>
+              <span className={`block font-heading font-semibold text-[0.62rem] tracking-[0.22em] ${dark ? 'text-acc-400' : 'text-blue-500'}`}>
                 SCIECHEM LIMITED
               </span>
             </div>
@@ -275,13 +275,13 @@ export default function Navbar() {
                   >
                     <ul className="space-y-0.5">
                       {SOLUTIONS.map((s) => (
-                        <li key={s}>
+                        <li key={s.label}>
                           <Link
-                            href={`/solutions/${s.toLowerCase().replace(/\s+/g, '-')}`}
+                            href={s.href}
                             className="block px-3 py-2 rounded-lg hover:bg-blue-50 text-neutral-700 hover:text-blue-700 text-sm transition-colors font-sans"
                             onClick={() => setOpenMenu(null)}
                           >
-                            {s}
+                            {s.label}
                           </Link>
                         </li>
                       ))}
@@ -397,7 +397,7 @@ export default function Navbar() {
                 ))}
 
                 {[
-                  { label: 'Solutions', href: '/solutions' },
+                  { label: 'Solutions', href: '/contact' },
                   { label: 'About Us', href: '/about' },
                   { label: 'Contact', href: '/contact' },
                 ].map((link) => (
