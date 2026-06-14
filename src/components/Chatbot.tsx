@@ -17,6 +17,12 @@ const GREETING: Message = {
     "Hello! I'm **Orbi**, Orbitron Sciechem's AI assistant.\n\nI can help you find the right chemicals, get product info, and place orders directly via WhatsApp. What can I help you with today?",
 };
 
+const FIRST_TIME_GREETING: Message = {
+  role: 'assistant',
+  content:
+    "👋 Welcome to **Orbitron Sciechem**! I'm **Orbi**, your personal chemical solutions assistant.\n\nWe supply industrial chemicals, food ingredients, pharmaceutical raw materials, laboratory equipment and more — across Kenya and East Africa.\n\nHow can I help you today? You can ask me about products, pricing, delivery, or place an order right here!",
+};
+
 const WA_LINK_RE = /https:\/\/wa\.me\/[^\s)>\]]+/g;
 
 function WhatsAppIcon({ size = 14 }: { size?: number }) {
@@ -111,6 +117,7 @@ export default function Chatbot() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [hasUnread, setHasUnread] = useState(false);
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -129,6 +136,25 @@ export default function Chatbot() {
       setTimeout(() => inputRef.current?.focus(), 150);
     }
   }, [isOpen]);
+
+  // Auto-open with greeting for first-time visitors
+  useEffect(() => {
+    const greeted = localStorage.getItem('orbi-greeted');
+    if (greeted) return;
+    setIsFirstVisit(true);
+    const openTimer = setTimeout(() => {
+      setMessages([]);
+      setIsLoading(true);
+      setIsOpen(true);
+      localStorage.setItem('orbi-greeted', '1');
+      const greetTimer = setTimeout(() => {
+        setIsLoading(false);
+        setMessages([FIRST_TIME_GREETING]);
+      }, 1800);
+      return () => clearTimeout(greetTimer);
+    }, 3500);
+    return () => clearTimeout(openTimer);
+  }, []);
 
   const send = useCallback(
     async (text: string) => {
@@ -306,7 +332,7 @@ export default function Chatbot() {
       <button
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? 'Close chat' : 'Chat with Orbi'}
-        className="fixed bottom-6 right-4 sm:right-6 z-50 flex items-center gap-2.5 bg-[#003B7A] hover:bg-blue-700 text-white rounded-2xl pl-3.5 pr-4 py-3 shadow-lg shadow-blue-900/30 hover:shadow-xl transition-all hover:-translate-y-0.5 group"
+        className={`fixed bottom-6 right-4 sm:right-6 z-50 flex items-center gap-2.5 bg-[#003B7A] hover:bg-blue-700 text-white rounded-2xl pl-3.5 pr-4 py-3 shadow-lg shadow-blue-900/30 hover:shadow-xl transition-all hover:-translate-y-0.5 group ${isFirstVisit && !isOpen ? 'animate-bounce' : ''}`}
       >
         {isOpen ? (
           <X size={18} />
