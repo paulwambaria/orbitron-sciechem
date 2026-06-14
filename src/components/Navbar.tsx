@@ -59,11 +59,11 @@ const INDUSTRIES = [
 ];
 
 const SOLUTIONS = [
-  { label: 'Technical Consulting',      href: '/contact' },
-  { label: 'Quality Assurance',         href: '/contact' },
-  { label: 'Logistics & Distribution',  href: '/chemical-distributor-east-africa' },
-  { label: 'Supply Chain Management',   href: '/contact' },
-  { label: 'Custom Formulations',       href: '/contact' },
+  { label: 'Technical Consulting',      href: '/solutions#technical-consulting' },
+  { label: 'Quality Assurance',         href: '/solutions#quality-assurance' },
+  { label: 'Logistics & Distribution',  href: '/solutions#logistics-distribution' },
+  { label: 'Supply Chain Management',   href: '/solutions#supply-chain-management' },
+  { label: 'Custom Formulations',       href: '/solutions#custom-formulations' },
 ];
 
 const ABOUT_LINKS = [
@@ -397,7 +397,7 @@ export default function Navbar() {
                 ))}
 
                 {[
-                  { label: 'Solutions', href: '/contact' },
+                  { label: 'Solutions', href: '/solutions' },
                   { label: 'About Us', href: '/about' },
                   { label: 'Contact', href: '/contact' },
                 ].map((link) => (
