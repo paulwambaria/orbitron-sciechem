@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   ChevronDown, Menu, X, Phone, Mail, ArrowRight,
   FlaskConical, Pill, Droplets, Fuel, Microscope, Wheat, Building2, Factory, Beaker,
@@ -75,15 +74,16 @@ const ABOUT_LINKS = [
   { label: 'Careers',          href: '/contact' },
 ];
 
-function OrbLogo({ size = 54 }: { size?: number }) {
+function OrbLogo({ size = 72 }: { size?: number }) {
   return (
-    <Image
-      src="/logo.svg"
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/logo.png"
       alt="Orbitron Sciechem Limited"
       width={size}
       height={size}
-      priority
-      className="object-contain drop-shadow-sm"
+      style={{ width: size, height: size }}
+      className="object-contain drop-shadow"
     />
   );
 }
@@ -149,11 +149,11 @@ export default function Navbar() {
             : 'bg-blue-900/95 backdrop-blur-sm'
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[4.25rem] flex items-center justify-between">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[5.5rem] flex items-center justify-between">
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 shrink-0" onClick={() => setMobileOpen(false)}>
-            <OrbLogo size={54} />
+            <OrbLogo size={72} />
             <div className="leading-none">
               <span className={`block font-heading font-black text-[1.05rem] tracking-widest ${dark ? 'text-white' : 'text-blue-700'}`}>
                 ORBITRON

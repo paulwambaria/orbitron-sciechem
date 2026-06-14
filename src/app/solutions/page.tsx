@@ -129,14 +129,14 @@ export default function SolutionsPage() {
       </section>
 
       {/* Quick nav */}
-      <div className="bg-white border-b border-neutral-100 sticky top-[4.25rem] z-30">
+      <div className="bg-white border-b border-neutral-100 sticky top-[5.5rem] z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-1 overflow-x-auto py-3 scrollbar-none">
             {SOLUTIONS.map((s) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className="shrink-0 font-heading font-semibold text-xs text-blue-700 hover:text-acc-500 bg-blue-50 hover:bg-orange-50 px-4 py-2 rounded-full transition-colors"
+                className="shrink-0 font-heading font-semibold text-xs text-blue-700 hover:text-acc-500 bg-blue-50 hover:bg-orange-50 px-4 py-2 rounded-full transition-colors whitespace-nowrap"
               >
                 {s.title}
               </a>
@@ -152,7 +152,7 @@ export default function SolutionsPage() {
             <div
               key={sol.id}
               id={sol.id}
-              className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-16 items-center scroll-mt-28`}
+              className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-16 items-center scroll-mt-36`}
             >
               {/* Icon block */}
               <div className="shrink-0 flex flex-col items-center lg:items-start gap-6 lg:w-72">

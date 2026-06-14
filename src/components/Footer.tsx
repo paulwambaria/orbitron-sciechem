@@ -1,15 +1,16 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 
 function OrbLogo() {
   return (
-    <Image
-      src="/logo.svg"
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/logo.png"
       alt="Orbitron Sciechem Limited"
-      width={62}
-      height={62}
-      className="object-contain"
+      width={90}
+      height={90}
+      style={{ width: 90, height: 90 }}
+      className="object-contain drop-shadow"
     />
   );
 }
